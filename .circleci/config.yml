@@ -1,15 +1,13 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      build:
-        executor:
-          name: node/default
-          tag: '2.3.0'
-        steps:
-          - checkout
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: '2.3.0'
+    steps:
+      - checkout
       - node/with-cache:
           steps:
             - run: yarn build
