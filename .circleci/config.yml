@@ -4,4 +4,12 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test
+      build:
+        executor:
+          name: node/default
+          tag: '2.3.0'
+        steps:
+          - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn build
